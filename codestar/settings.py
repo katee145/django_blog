@@ -85,6 +85,10 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 #    }
 #}
 
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL and isinstance(DATABASE_URL, bytes):
+    DATABASE_URL = DATABASE_URL.decode('utf-8')
+
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
